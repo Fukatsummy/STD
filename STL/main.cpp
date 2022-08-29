@@ -3,6 +3,7 @@
 #include<vector>
 #include<deque>
 #include<list>
+#include<iterator>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -111,34 +112,23 @@ void main()
 	cout << endl;
 #endif // DEQUE
 #ifdef STL_LIST
-	std::list<int>::iterator it;
 	std::list<int>list = { 3,5,8,13,21 };
-	for (int i : list)cout << i << tab; cout << endl;
-	for (std::list< int>::reverse_iterator it = list.rbegin(); it != list.rend(); ++it)
-	{
-		cout << *it << tab;
-	}
+	for (std::list<int>::iterator it = list.begin(); it != list.end(); ++it)
+	cout << *it << tab;
 	cout << endl;
 	int index;
 	int value;
 	cout << "¬ведите индекс добавл€емого элемента: "; cin >> index;
 	cout << "¬ведите значение добавл€емого элемента: "; cin >> value;
 	std::list<int>::iterator position = list.begin();
-	/*if (index <= list.size())
-	{
-		std::move(position, index);
-		list.insert(position,value);
-
-	}*/
-	/*if (index <= list.size())
-		list.insert(list.begin() + index, value);*/
-	for ( it = list.begin(); index; ++it);
-	list.insert(it, value);
-	//--it;
+	//for (int i = 0; i < index; i++)position++;
+	std::advance(position, index);//вместо for используем advance
+	list.insert(position, value);
 	for (int i : list)cout << i << tab; cout << endl;
+	/*for (int i : list)cout << i << tab; cout << endl;
 	cout << "¬ведите индекс удал€емого элемента: "; cin >> index;
 	for (it = list.begin(); index; ++it; --index);
-
+*/
 
 
 
